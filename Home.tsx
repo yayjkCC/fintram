@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components/native";
-import { Animated } from "react-native";
+import { Animated, Button } from "react-native";
+import firebase from "firebase";
 
 interface PotFillProps {
   fillColor: string;
@@ -88,6 +89,7 @@ const Home: React.FC = () => {
           <PotText>Expenses</PotText>
         </HomePots>
       </TopView>
+      <Button onPress={() => firebase.auth().signOut()} title="signout" />
     </HomeView>
   );
 };

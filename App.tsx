@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import firebase from "firebase";
 import firebaseConfig from "./config";
 import Home from "./Home";
+import Login from "./Login";
+import Loading from "./Loading";
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -14,8 +18,7 @@ const styles = StyleSheet.create({
 });
 
 const App: React.FC = () => {
-  // const [posts, usePosts] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -25,7 +28,9 @@ const App: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {!isLoggedIn ? <Text>Login please</Text> : <Home />}
+      {isLoggedIn === undefined && <Loading />}
+      {isLoggedIn === false && <Login />}
+      {isLoggedIn === true && <Home />}
     </View>
   );
 };
