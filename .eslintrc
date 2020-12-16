@@ -8,6 +8,12 @@
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
+  "ignorePatterns": [
+    "package.json",
+    "tsconfig.json",
+    "app.json",
+    "babel.config.js"
+  ],
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -16,7 +22,8 @@
     },
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".json"]
   },
   "rules": {
     "import/no-unresolved": 0,

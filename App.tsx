@@ -1,19 +1,25 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Home } from "./Home";
 import firebase from "firebase";
-import { firebaseConfig } from "./config";
+import firebaseConfig from "./config";
+import Home from "./Home";
 
-!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+firebase.initializeApp(firebaseConfig);
 
-export default function App() {
-  const [posts, usePosts] = useState([]);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});
+
+const App: React.FC = () => {
+  // const [posts, usePosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      user !== null ? setIsLoggedIn(true) : setIsLoggedIn(false);
+      setIsLoggedIn(user !== null);
     });
   }, []);
 
@@ -22,11 +28,6 @@ export default function App() {
       {!isLoggedIn ? <Text>Login please</Text> : <Home />}
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});
+export default App;
