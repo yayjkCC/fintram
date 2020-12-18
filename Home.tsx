@@ -2,16 +2,11 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components/native";
 import { Animated, Button } from "react-native";
 import firebase from "firebase";
+import { HomeView } from "./common-styled";
 
 interface PotFillProps {
   fillColor: string;
 }
-
-const HomeView = styled.View`
-  background-color: #d3d3d3;
-  flex-grow: 1;
-  padding: 16px;
-`;
 
 const TopView = styled.View`
   flex-basis: 50%;
