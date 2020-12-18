@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import styled from "styled-components/native";
-import { HomeView, StyledButton, WhiteText } from "./common-styled";
+import { HomeView, StyledButton, WhiteText } from "../../common-styled";
 
 const HistoryLink = styled.View`
   flex-direction: row;

@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Transactions from "../Transactions";
-import TransactionsAdd from "../TransactionAdd";
+import Transactions from "../components/transactions/Transactions";
+import TransactionsAdd from "../components/transactions/TransactionAdd";
 
 const Stack = createStackNavigator();
 

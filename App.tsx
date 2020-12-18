@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import firebase from "firebase";
 import firebaseConfig from "./config";
-import Login from "./Login";
-import Loading from "./Loading";
+import Login from "./components/Login";
+import Loading from "./components/Loading";
 import RootNavigator from "./navigation/RootNavigator";
 
 if (!firebase.apps.length) {

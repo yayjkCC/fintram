@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components/native";
 import { Animated, Button } from "react-native";
 import firebase from "firebase";
-import { HomeView } from "./common-styled";
+import { HomeView } from "../../common-styled";
 
 interface PotFillProps {
   fillColor: string;
