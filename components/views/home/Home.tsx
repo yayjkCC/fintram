@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Animated, Button } from "react-native";
 import firebase from "firebase";
-import { HomeView } from "../../common-styled";
+import { HomeView } from "../../../common-styled";
 import { HomePots, TopView, HomePotFill, PotText } from "./home-styled";
 
 const Home: React.FC = () => {

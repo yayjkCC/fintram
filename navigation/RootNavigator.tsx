@@ -2,9 +2,9 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../components/home/Home";
-import Analysis from "../components/analysis/Analysis";
-import Settings from "../components/settings/Settings";
+import Home from "../components/views/home/Home";
+import Analysis from "../components/views/analysis/Analysis";
+import Settings from "../components/views/settings/Settings";
 import TransactionNavigator from "./TransactionNavigator";
 
 const BottomTab = createBottomTabNavigator();

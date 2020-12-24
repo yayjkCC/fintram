@@ -4,11 +4,11 @@ import { ActivityIndicator } from "react-native";
 import { Switch } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/native";
-import { CenteredView, WhiteText } from "../common-styled";
-import RootNavigator from "../navigation/RootNavigator";
-import fetchUser from "./redux/actions/user";
-import PickerF from "./atoms/Picker";
-import TextInputF from "./atoms/TextInput";
+import { CenteredView, WhiteText } from "../../../common-styled";
+import RootNavigator from "../../../navigation/RootNavigator";
+import fetchUser from "../../../redux/actions/user";
+import PickerF from "../../atoms/Picker";
+import TextInputF from "../../atoms/TextInput";
 
 const LockExpensesContainer = styled.View`
   flex-direction: row;

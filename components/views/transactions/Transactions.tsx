@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
-import { HomeView, StyledButton, WhiteText } from "../../common-styled";
-import { dummyTransactions } from "../../constants";
+import { HomeView, StyledButton, WhiteText } from "../../../common-styled";
+import { dummyTransactions } from "../../../constants";
 import { HistoryLink, TransactionCard, Line1 } from "./transactions-styled";
 import { TransactionType } from "./transactions-types";
 
