@@ -19,3 +19,10 @@ export const StyledButton = styled.TouchableOpacity`
 export const WhiteText = styled.Text`
   color: white;
 `;
+
+export const CenteredView = styled.View`
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  background-color: ${primaryColor};
+`;

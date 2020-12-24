@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Google from "expo-google-app-auth";
-import { TouchableOpacity, Text } from "react-native";
 import styled from "styled-components/native";
 import firebase from "firebase";
+import { accentColor } from "../constants";
+import { CenteredView, WhiteText } from "../common-styled";
 
-const CenteredView = styled.View`
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+const SignInWithGoogleButton = styled.TouchableOpacity`
+  background-color: ${accentColor};
+  border-radius: 4px;
+  elevation: 5;
+  padding: 16px;
 `;
 
 interface SuccessfullyAuthenticatedUser {
@@ -20,6 +22,7 @@ interface SuccessfullyAuthenticatedUser {
 }
 
 const Login: React.FC = () => {
+  const [buttonText, setButtonText] = useState<string>("Sign in with google");
   const isUserEqual = (
     googleUser: SuccessfullyAuthenticatedUser,
     firebaseUser: firebase.User | null,
@@ -61,13 +64,13 @@ const Login: React.FC = () => {
             firebase.database().ref(`/users/${value.user?.uid}`).set({
               gmail: value.user?.email,
               locale: profile.locale,
-              first_name: profile.given_name,
-              last_name: profile.family_name,
+              firstName: profile.given_name,
+              lastName: profile.family_name,
             });
           })
           .catch((error) => {
             // Handle Errors here.
-            console.error(error);
+            setButtonText("Sign in with google");
           });
       } else {
         console.log("User already signed-in Firebase.");
@@ -77,6 +80,7 @@ const Login: React.FC = () => {
 
   const signInWithGoogleAsync = async () => {
     try {
+      setButtonText("Redirecting to google...");
       const result = await Google.logInAsync({
         androidClientId:
           "1087738175289-1cnpf92gmmp8lv9cd21qt1tu3moiv4hg.apps.googleusercontent.com",
@@ -84,21 +88,22 @@ const Login: React.FC = () => {
       });
 
       if (result.type === "success") {
+        setButtonText("Loading...");
         onSignIn(result);
         return result.accessToken;
       }
       return { cancelled: true };
     } catch (e) {
-      console.log(e);
+      setButtonText("Sign in with google");
       return { error: true };
     }
   };
 
   return (
     <CenteredView>
-      <TouchableOpacity onPress={signInWithGoogleAsync}>
-        <Text>Sign in with google</Text>
-      </TouchableOpacity>
+      <SignInWithGoogleButton onPress={signInWithGoogleAsync}>
+        <WhiteText>{buttonText}</WhiteText>
+      </SignInWithGoogleButton>
     </CenteredView>
   );
 };

@@ -6,6 +6,7 @@ const firebaseConfig = {
   messagingSenderId: "1087738175289",
   appId: "1:1087738175289:web:ed97f645e844fff9ec92e8",
   measurementId: "G-LERPKGKHJE",
+  databaseURL: "https://fintram-default-rtdb.firebaseio.com",
 };
 
 export default firebaseConfig;

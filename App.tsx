@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import firebase from "firebase";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import firebaseConfig from "./config";
 import Login from "./components/Login";
 import Loading from "./components/Loading";
-import RootNavigator from "./navigation/RootNavigator";
+import { persistor, store } from "./components/redux/store";
+import RegistrationCheck from "./components/RegistrationCheck";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -27,11 +30,18 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {isLoggedIn === undefined && <Loading />}
-      {isLoggedIn === false && <Login />}
-      {isLoggedIn === true && <RootNavigator />}
-    </View>
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={<Loading />}>
+        <View style={styles.container}>
+          {/* Show a loading screen until a login check is performed */}
+          {isLoggedIn === undefined && <Loading />}
+          {/* if user is logged out show a Login screen */}
+          {isLoggedIn === false && <Login />}
+          {/* if user is logged in show a Registration check screen */}
+          {isLoggedIn === true && <RegistrationCheck />}
+        </View>
+      </PersistGate>
+    </Provider>
   );
 };
 
